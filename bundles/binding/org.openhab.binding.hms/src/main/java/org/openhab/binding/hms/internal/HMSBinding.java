@@ -9,6 +9,8 @@
 package org.openhab.binding.hms.internal;
 
 import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.openhab.binding.hms.HMSBindingProvider;
@@ -45,26 +47,36 @@ public class HMSBinding extends AbstractActiveBinding<HMSBindingProvider> implem
 	private long refreshInterval = 60000;
 
 	private final static String KEY_DEVICE_NAME = "device";
+	private final static String KEY_BAUD_RATE = "baudrate";
+	private final static String KEY_PARITY = "parity";
 
 	private String deviceName;
+	
+	private Map<String, Object> properties = new HashMap<String, Object>();
 
 	private CULHandler cul;
 
-	private void setNewDeviceName(String deviceName) {
+	public HMSBinding() {
+	}
+
+	public void activate() {
+		logger.debug("Activating FS20 binding");
+	}
+	
+	private void updateDeviceSettings(){
 		if (cul != null) {
 			CULManager.close(cul);
 		}
-		this.deviceName = deviceName;
 		getCULHandler();
 	}
 
 	private void getCULHandler() {
 		try {
 			logger.debug("Opening CUL device on " + deviceName);
-			cul = CULManager.getOpenCULHandler(deviceName, CULMode.SLOW_RF);
+			cul = CULManager.getOpenCULHandler(deviceName, CULMode.SLOW_RF, properties);
 			cul.registerListener(this);
 		} catch (CULDeviceException e) {
-			logger.error("Can't open cul device", e);
+			logger.error("Can't open cul device " + deviceName, e);
 			cul = null;
 		}
 	}
@@ -181,9 +193,32 @@ public class HMSBinding extends AbstractActiveBinding<HMSBindingProvider> implem
 	}
 
 	@Override
-	public void updated(Dictionary<String, ?> config) throws ConfigurationException {
+	public void updated(Dictionary<String, ?> config)
+			throws ConfigurationException {
+		logger.debug("Received new config");
 		if (config != null) {
 
+			Boolean configChanged = false;
+			String baudRateString = (String) config.get(KEY_BAUD_RATE);
+			if(StringUtils.isNotBlank(baudRateString)){
+				properties.put(KEY_BAUD_RATE, Integer.parseInt(baudRateString));
+				configChanged = true;
+			}
+			
+			/*
+			 * PARITY_EVEN 2
+			 * PARITY_MARK 3
+			 * PARITY_NONE 0
+			 * PARITY_ODD  1
+			 * PARITY_SPACE 4
+			 */
+			
+			String parityString = (String) config.get(KEY_PARITY);
+			if(StringUtils.isNotBlank(parityString)){
+				properties.put(KEY_PARITY, Integer.parseInt(parityString));
+				configChanged = true;
+			}
+			
 			// to override the default refresh interval one has to add a
 			// parameter to openhab.cfg like
 			// <bindingName>:refresh=<intervalInMs>
@@ -191,17 +226,24 @@ public class HMSBinding extends AbstractActiveBinding<HMSBindingProvider> implem
 			if (StringUtils.isNotBlank(refreshIntervalString)) {
 				refreshInterval = Long.parseLong(refreshIntervalString);
 			}
-
 			String deviceName = (String) config.get(KEY_DEVICE_NAME);
 			if (StringUtils.isEmpty(deviceName)) {
 				logger.error("No device name configured");
 				setProperlyConfigured(false);
-				throw new ConfigurationException(KEY_DEVICE_NAME, "The device name can't be empty");
+				throw new ConfigurationException(KEY_DEVICE_NAME,
+						"The device name can't be empty");
 			} else {
-				setNewDeviceName(deviceName);
+				this.deviceName = deviceName;
+				configChanged = true;
+			}
+			
+			if(configChanged){
+				updateDeviceSettings();
 			}
 
 			setProperlyConfigured(true);
+			// read further config parameters here ...
+
 		}
 	}
 
