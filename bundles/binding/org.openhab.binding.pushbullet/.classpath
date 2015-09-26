@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java"/>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2-0.3.0.jar" sourcepath="D:/Download/jPushbullet2-v0.3/build/jPushbullet2-v0.3/jPushbullet2-v0.3-source.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/gson-2.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/httpclient-4.3.6.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/httpcore-4.3.3.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/httpmime-4.3.6.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/javax.websocket-api-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/jcl-over-slf4j-1.7.12.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/logback-classic-1.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/logback-core-1.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/slf4j-api-1.7.12.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/commons-lang3-3.3.2.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/fluent-hc-4.3.4.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/httpclient-cache-4.3.4.jar"/>
+	<classpathentry kind="lib" path="lib/jpushbullet2_lib/tyrus-standalone-client-1.8.3.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

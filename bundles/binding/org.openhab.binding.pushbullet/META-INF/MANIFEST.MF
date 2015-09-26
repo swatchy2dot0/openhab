@@ -1,0 +1,46 @@
+Manifest-Version: 1.0
+Private-Package: org.openhab.binding.pushbullet.internal
+Ignore-Package: org.openhab.binding.pushbullet.internal
+Bundle-License: http://www.eclipse.org/legal/epl-v10.html
+Bundle-Name: openHAB PushBullet Binding
+Bundle-SymbolicName: org.openhab.binding.pushbullet
+Bundle-Vendor: openHAB.org
+Bundle-Version: 1.0.0.qualifier
+Bundle-ManifestVersion: 2
+Bundle-Description: This is the PushBullet binding of the open Home Aut
+ omation Bus (openHAB)
+Import-Package: org.apache.commons.lang,
+ org.openhab.core.binding,
+ org.openhab.core.events,
+ org.openhab.core.items,
+ org.openhab.core.library.items,
+ org.openhab.core.library.types,
+ org.openhab.core.types,
+ org.openhab.model.item.binding,
+ org.osgi.framework,
+ org.osgi.service.cm;version="1.4.0",
+ org.osgi.service.component,
+ org.osgi.service.event,
+ org.slf4j
+Export-Package: net.iharder.jpushbullet2,
+ org.openhab.binding.pushbullet
+Bundle-DocURL: http://www.openhab.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Service-Component: OSGI-INF/pushbulletbinding.xml, OSGI-INF/genericbindingprovider.xml
+Bundle-ClassPath: .,
+ lib/jpushbullet2-0.3.0.jar,
+ lib/jpushbullet2_lib/commons-codec-1.6.jar,
+ lib/jpushbullet2_lib/gson-2.3.1.jar,
+ lib/jpushbullet2_lib/httpclient-4.3.6.jar,
+ lib/jpushbullet2_lib/httpcore-4.3.3.jar,
+ lib/jpushbullet2_lib/httpmime-4.3.6.jar,
+ lib/jpushbullet2_lib/javax.websocket-api-1.1.jar,
+ lib/jpushbullet2_lib/jcl-over-slf4j-1.7.12.jar,
+ lib/jpushbullet2_lib/logback-classic-1.1.3.jar,
+ lib/jpushbullet2_lib/logback-core-1.1.3.jar,
+ lib/jpushbullet2_lib/slf4j-api-1.7.12.jar,
+ lib/jpushbullet2_lib/commons-lang3-3.3.2.jar,
+ lib/jpushbullet2_lib/commons-logging-1.2.jar,
+ lib/jpushbullet2_lib/fluent-hc-4.3.4.jar,
+ lib/jpushbullet2_lib/httpclient-cache-4.3.4.jar,
+ lib/jpushbullet2_lib/tyrus-standalone-client-1.8.3.jar
