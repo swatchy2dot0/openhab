@@ -1,60 +1,49 @@
 package org.openhab.binding.pushbullet.connect;
 
-import java.util.Dictionary;
 import java.util.List;
 
 import org.openhab.binding.pushbullet.internal.PushBulletBinding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.iharder.jpushbullet2.AbstractPushbulletListener;
 import net.iharder.jpushbullet2.Device;
-import net.iharder.jpushbullet2.Push;
 import net.iharder.jpushbullet2.PushbulletClient;
-import net.iharder.jpushbullet2.PushbulletEvent;
 import net.iharder.jpushbullet2.PushbulletException;
-import net.iharder.jpushbullet2.PushbulletListener;
 
 public class PushBulletConnector {
 	
 	private static final Logger logger =
 			LoggerFactory.getLogger(PushBulletConnector.class);
 	
-	public static final String MESSAGE_KEY_ACCESS_TOKEN = "accesstoken";
-	public static final String DEVICE_NAME = "devicename";
-	public static final String DEFAULT_RECEIVER = "defaultreceiver";
+	private PushbulletClient pbClient;
+	private PushBulletReceiver pbRec = new PushBulletReceiver();
+	private String accessToken;
+	private String deviceName;
+	private PushBulletBinding binding;
+	private String deviceIden;
+	private String defaultRec;
 	
-	private static PushbulletClient pbClient;
-	private static PushBulletReceiver pbRec = new PushBulletReceiver();
-	private static String accessToken;
-	private static String deviceName;
-	public static PushBulletBinding binding;
-	public static String deviceIden;
-	public static String defaultRec;
+	private static PushBulletConnector instance;
 	
 	private PushBulletConnector(){		
 	}
 	
-	public static PushbulletClient getInstance(){
+	public static PushBulletConnector getInstance(){
+		if(instance == null){
+			instance = new PushBulletConnector();
+		}
+		return instance;
+	}
+	
+	public void startPbClient(){
 		if(pbClient == null){
 			pbClient = new PushbulletClient(accessToken);
 			createDevice();
 			startListening();
 		}
-		return pbClient;
 	}
 	
-	public static PushbulletClient getInstance(Dictionary<String, ?> config){
-		if(pbClient == null){
-			accessToken = (String) config.get(MESSAGE_KEY_ACCESS_TOKEN);
-			deviceName = (String) config.get(DEVICE_NAME);
-			defaultRec = (String) config.get(DEFAULT_RECEIVER);
-			getInstance();
-		}
-		return pbClient;
-	}
-	
-	private static void createDevice(){
+	private void createDevice(){
 		try {
 			List<Device> knownDevices = pbClient.getActiveDevices();
 			boolean inList = false;
@@ -78,15 +67,63 @@ public class PushBulletConnector {
 		}
 	}
 	
-	private static void startListening(){
+	private void startListening(){
 		pbClient.addPushbulletListener(pbRec);		
 		logger.debug("starting websocket to listen for new pushes");
 		pbClient.stopWebsocket();
 		pbClient.startWebsocket();
 	}
 	
-	public static String getDefaultRec(){
+	public String getDefaultRec(){
 		return defaultRec;
+	}
+
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
+
+	public String getDeviceName() {
+		return deviceName;
+	}
+
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
+	}
+
+	public PushBulletBinding getBinding() {
+		return binding;
+	}
+
+	public void setBinding(PushBulletBinding binding) {
+		this.binding = binding;
+	}
+
+	public String getDeviceIden() {
+		return deviceIden;
+	}
+
+	public void setDeviceIden(String deviceIden) {
+		this.deviceIden = deviceIden;
+	}
+
+	public void setDefaultRec(String defaultRec) {
+		this.defaultRec = defaultRec;
+	}
+
+	public PushbulletClient getPbClient() {
+		return pbClient;
+	}
+
+	public PushBulletReceiver getPbRec() {
+		return pbRec;
+	}
+
+	public void setPbRec(PushBulletReceiver pbRec) {
+		this.pbRec = pbRec;
 	}
 	
 	

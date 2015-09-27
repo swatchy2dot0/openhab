@@ -22,8 +22,14 @@ Import-Package: org.apache.commons.lang,
  org.osgi.service.component,
  org.osgi.service.event,
  org.slf4j
-Export-Package: net.iharder.jpushbullet2,
- org.openhab.binding.pushbullet
+Export-Package: net.iharder.jpushbullet2;
+  uses:="org.apache.commons.logging,
+   new net.iharder.jpushbullet2,
+   org.apache.http.entity.mime,
+   javax.websocket,
+   org.apache.http.client.methods,
+   org.apache.http",
+ org.openhab.binding.pushbullet.connect;uses:="org.openhab.binding.pushbullet.internal,net.iharder.jpushbullet2"
 Bundle-DocURL: http://www.openhab.org
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Service-Component: OSGI-INF/pushbulletbinding.xml, OSGI-INF/genericbindingprovider.xml

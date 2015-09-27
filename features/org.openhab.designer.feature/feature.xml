@@ -305,6 +305,13 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+	
+   <plugin
+         id="org.openhab.action.pushbullet"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.openhab.action.prowl"
@@ -406,6 +413,13 @@
 
    <plugin
          id="org.openhab.action.mqtt"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+	<plugin
+         id="org.openhab.action.pushbullet"
          download-size="0"
          install-size="0"
          version="0.0.0"

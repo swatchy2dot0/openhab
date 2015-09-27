@@ -11,6 +11,8 @@ package org.openhab.binding.pushbullet.internal;
 import java.util.Dictionary;
 import java.util.Map;
 
+import net.iharder.jpushbullet2.PushbulletClient;
+
 import org.apache.commons.lang.StringUtils;
 import org.openhab.binding.pushbullet.PushBulletBindingProvider;
 import org.openhab.binding.pushbullet.connect.PushBulletConnector;
@@ -35,12 +37,20 @@ public class PushBulletBinding extends AbstractActiveBinding<PushBulletBindingPr
 	private static final Logger logger = 
 		LoggerFactory.getLogger(PushBulletBinding.class);
 	
+	public static final String MESSAGE_KEY_ACCESS_TOKEN = "accesstoken";
+	public static final String DEVICE_NAME = "devicename";
+	public static final String DEFAULT_RECEIVER = "defaultreceiver";
+	PushBulletConnector connect = PushBulletConnector.getInstance();
+
 	@Override
 	public void updated(Dictionary<String, ?> config){
 		logger.info("PushBullet: loading config");
+		connect.setBinding(this);
 		if(config != null){
-			PushBulletConnector.binding = this;
-            PushBulletConnector.getInstance(config);
+			connect.setAccessToken((String) config.get(MESSAGE_KEY_ACCESS_TOKEN));
+			connect.setDeviceName((String) config.get(DEVICE_NAME));
+			connect.setDefaultRec((String) config.get(DEFAULT_RECEIVER));
+			connect.startPbClient();
 		} else {
 			logger.info("Pushbullet is not configured");
 		}
@@ -54,7 +64,6 @@ public class PushBulletBinding extends AbstractActiveBinding<PushBulletBindingPr
 			}
 		}
 	}
-	
 	
 	public void activate(final BundleContext bundleContext, final Map<String, Object> configuration) {
 		

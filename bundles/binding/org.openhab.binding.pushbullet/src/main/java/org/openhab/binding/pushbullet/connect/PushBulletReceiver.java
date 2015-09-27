@@ -17,10 +17,10 @@ public class PushBulletReceiver implements PushbulletListener {
 	@Override
 	public void pushReceived(PushbulletEvent pushEvent) {
         try {
-			for(Push p: PushBulletConnector.getInstance().getPushes(1)){
-				if(p.getTarget_device_iden().equals(PushBulletConnector.deviceIden)){
+			for(Push p: PushBulletConnector.getInstance().getPbClient().getPushes(1)){
+				if(p.getTarget_device_iden().equals(PushBulletConnector.getInstance().getDeviceIden())){
 					String[] input = p.getBody().trim().split(":");
-					PushBulletConnector.binding.postUpdate(input[0], new StringType(input[1]));
+					PushBulletConnector.getInstance().getBinding().postUpdate(input[0], new StringType(input[1]));
 				} else {
 					logger.info("That goes me nothing on");
 				}

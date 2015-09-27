@@ -4,7 +4,7 @@
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/jpushbullet2-0.3.0.jar" sourcepath="D:/Download/jPushbullet2-v0.3/build/jPushbullet2-v0.3/jPushbullet2-v0.3-source.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jpushbullet2-0.3.0.jar" sourcepath="D:/Download/jPushbullet2-v0.3/build/jPushbullet2-v0.3/jPushbullet2-v0.3-source.jar"/>
 	<classpathentry kind="lib" path="lib/jpushbullet2_lib/commons-codec-1.6.jar"/>
 	<classpathentry kind="lib" path="lib/jpushbullet2_lib/gson-2.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/jpushbullet2_lib/httpclient-4.3.6.jar"/>

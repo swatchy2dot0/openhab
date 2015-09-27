@@ -4,35 +4,30 @@
 
 	<parent>
 		<groupId>org.openhab.bundles</groupId>
-		<artifactId>binding</artifactId>
-		<version>1.8.0-SNAPSHOT</version>
+		<artifactId>action</artifactId>
+		<version>0.1-SNAPSHOT</version>
 	</parent>
 
 	<properties>
-		<bundle.symbolicName>org.openhab.binding.pushbullet</bundle.symbolicName>
-		<bundle.namespace>org.openhab.binding.pushbullet</bundle.namespace>
-		<deb.name>openhab-addon-binding-PushBullet</deb.name>
+		<bundle.symbolicName>org.openhab.action.pushbullet</bundle.symbolicName>
+		<bundle.namespace>org.openhab.action.pushbullet</bundle.namespace>
+		<deb.name>openhab-addon-action-PushBullet</deb.name>
 		<deb.description>${project.name}</deb.description>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.openhab.binding</groupId>
-	<artifactId>org.openhab.binding.pushbullet</artifactId>
+	<groupId>org.openhab.action</groupId>
+	<artifactId>org.openhab.action.pushbullet</artifactId>
 
-	<name>openHAB PushBullet Binding</name>
+	<name>openHAB PushBullet Action</name>
 
 	<packaging>eclipse-plugin</packaging>
-
+	
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.vafer</groupId>
 				<artifactId>jdeb</artifactId>
-				<configuration>
-					<instructions>
-						<Export-Package>net.iharder.jpushbullet2.*</Export-Package>
-					</instructions>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
