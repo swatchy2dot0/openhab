@@ -56,7 +56,7 @@ public class PushBulletConnector {
 			}
 			
 			if(!inList){
-				logger.info("Device with name " + deviceName + " is not known. Creating it.");
+				logger.debug("Device with name " + deviceName + " is not known. Creating it.");
 				pbClient.createDevice(deviceName);
 			} else {
 				logger.debug("Device with name " + deviceName + " is already known");

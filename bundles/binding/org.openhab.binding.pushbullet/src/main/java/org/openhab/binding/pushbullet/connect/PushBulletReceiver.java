@@ -22,18 +22,19 @@ public class PushBulletReceiver implements PushbulletListener {
 					String[] input = p.getBody().trim().split(":");
 					PushBulletConnector.getInstance().getBinding().postUpdate(input[0], new StringType(input[1]));
 				} else {
-					logger.info("That goes me nothing on");
+					logger.debug("Message for other recipient");
 				}
 			}
 		} catch (PushbulletException e) {
 			logger.error("somethings wrong with the pushes or the connection");
+			e.printStackTrace();
 		}
 		
 	}
 
     @Override
     public void devicesChanged(PushbulletEvent pushEvent) {
-        logger.info("device changed" + pushEvent);
+        logger.debug("device changed" + pushEvent);
     }
 
 	@Override
