@@ -161,5 +161,6 @@
     <module>org.openhab.binding.lacrosse</module>
     <module>org.openhab.binding.pushbullet</module>
     <module>org.openhab.binding.ipx800</module>
+    <module>org.openhab.binding.dbus</module>
   </modules>
 </project>
