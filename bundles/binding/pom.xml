@@ -160,5 +160,6 @@
     <module>org.openhab.binding.sagercaster</module>
     <module>org.openhab.binding.lacrosse</module>
     <module>org.openhab.binding.pushbullet</module>
+    <module>org.openhab.binding.ipx800</module>
   </modules>
 </project>

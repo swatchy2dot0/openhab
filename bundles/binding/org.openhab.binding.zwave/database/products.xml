@@ -263,6 +263,14 @@
 		</Product>
 		<Product>
 			<Reference>
+				<Type>4341</Type>
+				<Id>3750</Id>
+			</Reference>
+			<Model>CA-3750</Model>
+			<Label lang="en">Heavy duty contactor</Label>
+		</Product>
+		<Product>
+			<Reference>
 				<Type>4841</Type>
 				<Id>0020</Id>
 			</Reference>
@@ -483,6 +491,14 @@
 		</Product>
 		<Product>
 			<Reference>
+				<Type>5246</Type>
+				<Id>3133</Id>
+			</Reference>
+			<Model>LFM-20</Model>
+			<Label lang="en">Isolated Contact Fixture Module</Label>
+		</Product>
+		<Product>
+			<Reference>
 				<Type>4457</Type>
 				<Id>3034</Id>
 			</Reference>
@@ -650,9 +666,9 @@
 				<Type>2001</Type>
 				<Id>0000</Id>
 			</Reference>
-			<Model>054313</Model>
-			<Label lang="en">Single button wall switch</Label>
-			<Label lang="de">Wandschalter</Label>
+			<Model>ZME_054313Z</Model>
+			<Label lang="en">Duewi ZW BJ ES 1000 / Reitz 054313 / ZWave.me 05457 Single button wall switch</Label>
+			<Label lang="de">Duewi ZW BJ ES 1000 / Reitz 054313 / ZWave.me 05457 Wandeinbautaster einfach</Label>
 			<ConfigFile>reitz/054313.xml</ConfigFile>
 		</Product>
 	</Manufacturer>
@@ -1318,6 +1334,15 @@
 		</Product>
 		<Product>
 			<Reference>
+				<Type>2017</Type>
+				<Id>01717</Id>
+			</Reference>
+			<Model>ZL7432</Model>
+			<Label lang="en">In Wall Dual Relay Switch</Label>
+			<ConfigFile>vision/zl7432.xml</ConfigFile>
+		</Product>
+		<Product>
+			<Reference>
 				<Type>2005</Type>
 				<Id>0508</Id>
 			</Reference>
@@ -1516,6 +1541,10 @@
 			<Reference>
 				<Type>0B00</Type>
 				<Id>1001</Id>
+			</Reference>
+			<Reference>
+				<Type>0B00</Type>
+				<Id>2001</Id>
 			</Reference>
 			<Reference>
 				<Type>0B00</Type>
@@ -1851,7 +1880,7 @@
 				<Type>0121</Type>
 				<Id>0133</Id>
 			</Reference>
-			<Model>TZ68</Model>
+			<Model>TZ78</Model>
 			<Label lang="en">In Wall Micro Switch</Label>
 			<ConfigFile>tkb/tz78.xml</ConfigFile>
 		</Product>
@@ -2159,6 +2188,15 @@
             <Label lang="en">PIR Sensor</Label>
             <ConfigFile>enerwave/zwn-bpc.xml</ConfigFile>
         </Product>
+        <Product>
+            <Reference>
+                <Type>0801</Type>
+                <Id>0b03</Id>
+            </Reference>
+            <Model>ZWN-SC7</Model>
+            <Label lang="en">Scene Controller</Label>
+            <ConfigFile>enerwave/zwn-sc7.xml</ConfigFile>
+        </Product>
     </Manufacturer>
 	<Manufacturer>
 		<Id>0001</Id>
@@ -2205,6 +2243,15 @@
 			<Model>VRI10-1LZ</Model>
 			<Label lang="en">Scene Capable Push On/Off Dimmer</Label>
 			<ConfigFile>leviton/vri10-1lz.xml</ConfigFile>
+		</Product>
+		<Product>
+			<Reference>
+				<Type>0602</Type>
+				<Id>0334</Id>
+			</Reference>
+			<Model>VRMX1-1LZ</Model>
+			<Label lang="en">Scene Capable Push On/Off Dimmer</Label>
+			<ConfigFile>leviton/vrmx1-1lz.xml</ConfigFile>
 		</Product>
 		<Product>
 			<Reference>
@@ -2362,6 +2409,15 @@
 		</Product>
 		<Product>
 			<Reference>
+				<Type>1</Type>
+				<Id>51</Id>
+			</Reference>
+			<Model>ZMNHDD</Model>
+			<Label lang="en">Flush Dimmer Plus</Label>
+			<ConfigFile>qubino/zmnhdd.xml</ConfigFile>
+		</Product>
+		<Product>
+			<Reference>
 				<Type>5</Type>
 				<Id>1</Id>
 			</Reference>
@@ -2399,6 +2455,15 @@
 			<Model>ZMNHOD</Model>
 			<Label lang="en">Flush Shutter</Label>
 			<ConfigFile>qubino/zmnhod.xml</ConfigFile>
+		</Product>
+		<Product>
+			<Reference>
+				<Type>2</Type>
+				<Id>51</Id>
+			</Reference>
+			<Model>ZMNHBD</Model>
+			<Label lang="en">Flush 2 relays</Label>
+			<ConfigFile>qubino/zmnhbd.xml</ConfigFile>
 		</Product>
 	</Manufacturer>
 	<Manufacturer>
@@ -2787,7 +2852,7 @@
 		</Product>
 	</Manufacturer>
 	<Manufacturer>
-		<Id>00A5</Id>
+		<Id>0165</Id>
 		<Name>Nodon</Name>
 		<Product>
 			<Reference>
@@ -2796,6 +2861,7 @@
 			</Reference>
 			<Model>CRC-3100</Model>
 			<Label lang="en">Remote Control</Label>
+			<ConfigFile>nodon/crc3100.xml</ConfigFile>
 		</Product>
 	</Manufacturer>
 </Manufacturers>
