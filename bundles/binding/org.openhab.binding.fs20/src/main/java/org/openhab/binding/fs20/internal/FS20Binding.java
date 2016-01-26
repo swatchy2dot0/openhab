@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2015, openHAB.org and others.
+ * Copyright (c) 2010-2016, openHAB.org and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -36,11 +36,9 @@ import org.slf4j.LoggerFactory;
  * @author Till Klocke
  * @since 1.4.0
  */
-public class FS20Binding extends AbstractActiveBinding<FS20BindingProvider>
-		implements ManagedService, CULListener {
+public class FS20Binding extends AbstractActiveBinding<FS20BindingProvider>implements ManagedService, CULListener {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(FS20Binding.class);
+    private static final Logger logger = LoggerFactory.getLogger(FS20Binding.class);
 
 	private final static String KEY_DEVICE_NAME = "device";
 	private final static String KEY_BAUD_RATE = "baudrate";
@@ -61,6 +59,7 @@ public class FS20Binding extends AbstractActiveBinding<FS20BindingProvider>
 	public FS20Binding() {
 	}
 
+    @Override
 	public void activate() {
 		logger.debug("Activating FS20 binding");
 	}
@@ -83,6 +82,7 @@ public class FS20Binding extends AbstractActiveBinding<FS20BindingProvider>
 		}
 	}
 
+    @Override
 	public void deactivate() {
 		logger.debug("Deactivating FS20 binding");
 		if(cul!=null) {
@@ -128,13 +128,10 @@ public class FS20Binding extends AbstractActiveBinding<FS20BindingProvider>
 			}
 		}
 		if (bindingConfig != null) {
-			logger.debug("Received command " + command.toString()
-					+ " for item " + itemName);
+            logger.debug("Received command " + command.toString() + " for item " + itemName);
 			try {
-				FS20Command fs20Command = FS20CommandHelper
-						.convertHABCommandToFS20Command(command);
-				cul.send("F" + bindingConfig.getAddress()
-						+ fs20Command.getHexValue());
+                FS20Command fs20Command = FS20CommandHelper.convertHABCommandToFS20Command(command);
+                cul.send("F" + bindingConfig.getAddress() + fs20Command.getHexValue());
 			} catch (CULCommunicationException e) {
 				logger.error("An exception occured while sending a command", e);
 			}
@@ -145,8 +142,7 @@ public class FS20Binding extends AbstractActiveBinding<FS20BindingProvider>
 	 * @{inheritDoc
 	 */
 	@Override
-	public void updated(Dictionary<String, ?> config)
-			throws ConfigurationException {
+    public void updated(Dictionary<String, ?> config) throws ConfigurationException {
 		logger.debug("Received new config");
 		if (config != null) {
 
@@ -155,6 +151,7 @@ public class FS20Binding extends AbstractActiveBinding<FS20BindingProvider>
 			 * Valid values of the baudRateString
 			 * "75", "110", "300", "1200", "2400", "4800", 
 			 * "9600", "19200", "38400", "57600", "115200"
+             * 
 			 * @see org.openhab.io.transport.cul.internal.CULSerialHandlerImpl
 			 */
 			String baudRateString = (String) config.get(KEY_BAUD_RATE);
@@ -170,6 +167,7 @@ public class FS20Binding extends AbstractActiveBinding<FS20BindingProvider>
 			 * "EVEN"
 			 * "MARK"
 			 * "SPACE"
+             * 
 			 * @see org.openhab.io.transport.cul.internal.CULSerialHandlerImpl
 			 */
 			String parityString = (String) config.get(KEY_PARITY);
@@ -189,8 +187,7 @@ public class FS20Binding extends AbstractActiveBinding<FS20BindingProvider>
 			if (StringUtils.isEmpty(deviceName)) {
 				logger.error("No device name configured");
 				setProperlyConfigured(false);
-				throw new ConfigurationException(KEY_DEVICE_NAME,
-						"The device name can't be empty");
+                throw new ConfigurationException(KEY_DEVICE_NAME, "The device name can't be empty");
 			} else {
 				this.deviceName = deviceName;
 				configChanged = true;
@@ -230,8 +227,7 @@ public class FS20Binding extends AbstractActiveBinding<FS20BindingProvider>
 		}
 		if (config != null) {
 			FS20Command fs20Command = FS20Command.getFromHexValue(command);
-			logger.debug("Received command " + fs20Command.toString()
-					+ " for device " + config.getAddress());
+            logger.debug("Received command " + fs20Command.toString() + " for device " + config.getAddress());
 			eventPublisher.postUpdate(config.getItem().getName(),
 					FS20CommandHelper.getStateFromFS20Command(fs20Command));
 		} else {

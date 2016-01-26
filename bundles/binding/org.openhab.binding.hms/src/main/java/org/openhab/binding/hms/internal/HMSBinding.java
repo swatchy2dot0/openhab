@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2015, openHAB.org and others.
+ * Copyright (c) 2010-2016, openHAB.org and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -81,6 +81,7 @@ public class HMSBinding extends AbstractActiveBinding<HMSBindingProvider> implem
 		}
 	}
 
+    @Override
 	public void deactivate() {
 		logger.debug("Deactivating HMS binding");
 		cul.unregisterListener(this);
@@ -128,8 +129,7 @@ public class HMSBinding extends AbstractActiveBinding<HMSBindingProvider> implem
 			}
 			double humidity = Integer.parseInt(woHeader.substring(6, 8) + woHeader.substring(4, 5)) / 10.0;
 
-			logger.info("device: {}, T: {},\tH: {}, Bat.: {}", device,
-					(!isNegative ? " " : "") + temperature, humidity,
+            logger.info("device: {}, T: {},\tH: {}, Bat.: {}", device, (!isNegative ? " " : "") + temperature, humidity,
 					batteryStatus);
 			
 			HMSBindingConfig temperatureConfig = findConfig(device, HMSBindingConfig.Datapoint.TEMPERATURE);
