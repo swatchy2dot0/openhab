@@ -5,7 +5,7 @@ Bundle-License: http://www.eclipse.org/legal/epl-v10.html
 Bundle-Name: openHAB PushBullet Binding
 Bundle-SymbolicName: org.openhab.binding.pushbullet
 Bundle-Vendor: openHAB.org
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.9.0.qualifier
 Bundle-ManifestVersion: 2
 Bundle-Description: This is the PushBullet binding of the open Home Aut
  omation Bus (openHAB)
@@ -31,7 +31,7 @@ Export-Package: net.iharder.jpushbullet2;
    org.apache.http",
  org.openhab.binding.pushbullet.connect;uses:="org.openhab.binding.pushbullet.internal,net.iharder.jpushbullet2"
 Bundle-DocURL: http://www.openhab.org
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Service-Component: OSGI-INF/pushbulletbinding.xml, OSGI-INF/genericbindingprovider.xml
 Bundle-ClassPath: .,
  lib/jpushbullet2-0.3.0.jar,

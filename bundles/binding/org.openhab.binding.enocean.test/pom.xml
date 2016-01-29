@@ -18,7 +18,7 @@
 	<groupId>org.openhab.binding</groupId>
 	<artifactId>org.openhab.binding.enocean.test</artifactId>
 
-	<name>openHAB enocean Binding Tests</name>
+	<name>openHAB EnOcean Binding Tests</name>
 
 	<packaging>eclipse-test-plugin</packaging>
 
